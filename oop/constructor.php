@@ -14,7 +14,6 @@ class Produk{
         $this ->harga = $harga;
     }   
 
-
     public function getlabel(){
             return "$this->judul, $this->penulis, $this->penerbit, $this->harga";
             //return this ->judul .',' . this->penulis;
@@ -37,7 +36,8 @@ echo "<br>";
 echo $produk4->getlabel();
 echo "<br>";
 
-
-
+$infoproduk = new CetakInfoProduk();
+echo $infoproduk -> cetak($produk1);
+//echo "Siksa Kubur,ira, PT.Ulin, 300000";
 
 ?>
