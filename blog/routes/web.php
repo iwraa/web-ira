@@ -1,6 +1,10 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,16 +18,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
-});
-Route::get('/about', function () {
-    return view('About', [
-        "name"=> "Ira",
-        "email" =>"emailira@gmail.com",
-        "image"=> "hshshs.jpeg"
+    return view('home', [
+        "title" => "Home"
     ]);
 });
-Route::get('/blog', function () {
-    return view('posts');
+
+//menggunakan clossure
+Route::get('/about', function () {
+    return view('about',[
+        "title" => "About",
+        "name" => "ira",
+        "email" => "shafiraira113@gmail.com",
+        "image" => "hshshs.jpeg"
+    ]);
 });
 
+//menggunakan controller
+Route::get('/blog', [PostController::class, 'index']);
+Route::get('/posts/{slug}', [PostController::class, 'show']);
